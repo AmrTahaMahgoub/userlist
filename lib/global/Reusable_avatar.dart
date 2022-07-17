@@ -10,7 +10,7 @@ class AvatarModel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(backgroundColor:avatarcolor ,
-    child: widget,
-    radius: avatarRaduis,);
+    radius: avatarRaduis,
+    child: widget,);
   }
 }
