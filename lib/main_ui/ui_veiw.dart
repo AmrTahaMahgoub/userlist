@@ -28,15 +28,15 @@ class _MainPageState extends State<MainPage> {
           if (state is UserLoaded) {
             return Container(color: Colors.grey.shade300,
               child: ListView.builder(
-                itemCount: state.userlistmodel.length,
+                itemCount: state.usersListModel.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(onTap: (){
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) => UserDetails(
-                          name: state.userlistmodel[index].name,
-                          email: state.userlistmodel[index].email,
+                          name: state.usersListModel.data[index].name,
+                          email: state.usersListModel.data[index].email,
                           color: Uicolors[index],
                         ),
                       ),
@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> {
                             CircleAvatar(backgroundColor: Uicolors[index],
                                 radius: 40,
                                 child: Stack(children: [
-                                  Center(child: Text('${state.userlistmodel[index].name.trim()
+                                  Center(child: Text('${state.usersListModel.data[index].name.trim()
                                       .split(' ')
                                       .map((e) => e[0])
                                       .take(2).join()
@@ -72,8 +72,8 @@ class _MainPageState extends State<MainPage> {
                             ),
                             Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('${state.userlistmodel[index].name}', style: TextStyle(fontWeight: FontWeight.w500),),
-                                Text('${state.userlistmodel[index].email}', style: TextStyle(fontSize: 11),),
+                                Text('${state.usersListModel.data[index].name}', style: TextStyle(fontWeight: FontWeight.w500),),
+                                Text('${state.usersListModel.data[index].email}', style: TextStyle(fontSize: 11),),
                                 // Text('${}'),
                               ],
                             ),

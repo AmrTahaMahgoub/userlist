@@ -2,12 +2,13 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:userlist/USERS/models/userslist.dart';
 
 
 
 import '../../global/errors.dart';
 import '../Repositries/User_Repository.dart';
-import '../models/userdata.dart';
+
 
 
 part 'user_event.dart';
@@ -20,7 +21,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<GetUserList>((event, emit) async {
       try {
         emit(UserLoading());
-        List<UserModel> myList = await _apiRepository.GetUserList();
+        final myList = await _apiRepository.GetUserList();
         emit(UserLoaded(myList));
 
       }
