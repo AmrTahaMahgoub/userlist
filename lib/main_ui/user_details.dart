@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../global/colors.dart';
+import '../global/Stack_model.dart';
+import '../global/constants.dart';
 
 class UserDetails extends StatelessWidget {
   UserDetails({required this.name, required this.email, required this.color});
@@ -13,7 +14,7 @@ class UserDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('USER DETAILS', style: TextStyle(color: Colors.black)),
+        title: Text('USER DETAILS', style: KappbarText),
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
@@ -23,33 +24,18 @@ class UserDetails extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Container(padding: EdgeInsets.only(top: 18),
+      body: Container(
+        padding: EdgeInsets.only(top: 18),
         width: double.infinity,
         child: Card(
-
-          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CircleAvatar(
-                  backgroundColor: color,
-                  radius: 40,
-                  child: Stack(children: [
-                    Center(
-                        child: Text(
-                          name.trim().split(' ').map((e) => e[0]).take(2).join(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700, color: Colors.black),
-                        )),
-                    Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                            radius: 14,
-                            backgroundColor: Colors.white,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 12,
-                              child: Icon(Icons.male, color: Colors.black),
-                            )))
-                  ])),
+                backgroundColor: color,
+                radius: 40,
+                child: StackModel(named:name ),
+              ),
               SizedBox(
                 width: 18,
               ),
@@ -58,13 +44,13 @@ class UserDetails extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                    style: Knametext,
                   ),
                   Text(
                     email,
-                    style: TextStyle(fontSize: 11),
+                    style: KemailText,
                   ),
-                  // Text('${}'),
+
                 ],
               ),
             ],

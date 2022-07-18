@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-List<Color> Uicolors = [Colors.red,
+List<Color> UiColors = [Colors.red,
   Colors.green,
   Colors.green,
   Colors.greenAccent,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../USERS/bloc/user_bloc.dart';
+import '../global/Stack_model.dart';
 import '../global/colors.dart';
+import '../global/constants.dart';
 import 'user_details.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,64 +19,59 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Center(
-            child: Text(
-              'User List',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-            ),
+          backgroundColor: Colors.white,
+          title: const Text(
+            'User List',
+            style: KappbarText,
           )),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           if (state is UserLoaded) {
-            return Container(color: Colors.grey.shade300,
+            return Container(
+              color: Colors.grey.shade300,
               child: ListView.builder(
-                itemCount: state.usersListModel.data.length,
+                itemCount: state.UserListModel.data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => UserDetails(
-                          name: state.usersListModel.data[index].name,
-                          email: state.usersListModel.data[index].email,
-                          color: Uicolors[index],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => UserDetails(
+                            name: state.UserListModel.data[index].name,
+                            email: state.UserListModel.data[index].email,
+                            color: UiColors[index],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                    //
+                      );
+                    },
+
                     child: Container(
                       child: Card(
                         color: Colors.grey.shade300,
                         child: Row(
                           children: [
-                            CircleAvatar(backgroundColor: Uicolors[index],
-                                radius: 40,
-                                child: Stack(children: [
-                                  Center(child: Text('${state.usersListModel.data[index].name.trim()
-                                      .split(' ')
-                                      .map((e) => e[0])
-                                      .take(2).join()
-                                  }', style: TextStyle(fontWeight: FontWeight.w700,color: Colors.black),)),
-                                  Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: CircleAvatar(
-                                          radius: 14
-                                          ,
-                                          backgroundColor: Colors.white,
-                                          child: CircleAvatar(backgroundColor: Colors.white,
-                                            radius: 12,
-                                            child: Icon(Icons.male, color: Colors.black),
-                                          )))
-                                ])),
-                            SizedBox(
+                            CircleAvatar(
+                              backgroundColor: UiColors[index],
+                              radius: 40,
+                              child: StackModel(named:state.UserListModel.data[index].name ),
+                            ),
+                            const SizedBox(
                               width: 18,
                             ),
-                            Column(crossAxisAlignment: CrossAxisAlignment.start,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('${state.usersListModel.data[index].name}', style: TextStyle(fontWeight: FontWeight.w500),),
-                                Text('${state.usersListModel.data[index].email}', style: TextStyle(fontSize: 11),),
-                                // Text('${}'),
+                                Text(
+                                  state.UserListModel.data[index].name,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Text(
+                                  state.UserListModel.data[index].email,
+                                  style: KemailText,
+                                ),
+
                               ],
                             ),
                           ],
@@ -86,13 +83,10 @@ class _MainPageState extends State<MainPage> {
               ),
             );
           } else {
-            return Container(
-                child: Center(child: CircularProgressIndicator())
-            );
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
     );
   }
 }
-
