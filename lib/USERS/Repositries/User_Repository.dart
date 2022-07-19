@@ -9,9 +9,9 @@ class ApiRepository {
 
   Future<UsersListModel> getUserList() async {
     http.Response userdata = await http.get(Uri.parse('https://gorest.co.in/public/v1/users?page=1'));
-    return UsersListModel.fromJson(jsonDecode(userdata.body));
-
-
+     final Users = UsersListModel.fromJson(jsonDecode(userdata.body),);
+     print(Users);
+     return Users;
 
   }
 }
