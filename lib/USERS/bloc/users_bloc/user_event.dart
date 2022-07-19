@@ -1,8 +1,4 @@
-
 part of 'user_bloc.dart';
-
-
-
 
 abstract class UserEvent extends Equatable {
   const UserEvent();
@@ -12,5 +8,3 @@ abstract class UserEvent extends Equatable {
 class GetUserList extends UserEvent {
 
 }
-
-

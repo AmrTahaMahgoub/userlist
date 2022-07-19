@@ -5,8 +5,6 @@ import 'constants.dart';
 
 class StackModel extends StatelessWidget {
   const StackModel({required this.named});
-  // final Color Colour ;
-  // final Widget widgt;
   final String named;
 
   @override

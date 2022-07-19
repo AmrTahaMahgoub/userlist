@@ -3,8 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'USERS/bloc/user_bloc.dart';
-import 'main_ui/ui_veiw.dart';
+
+
+import 'USERS/bloc/connection_bloc/connected_bloc.dart';
+import 'USERS/bloc/users_bloc/user_bloc.dart';
+import 'screens/open_page.dart';
+
 
 class MyHttpoverrides extends HttpOverrides {
   @override
@@ -25,11 +29,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserBloc()..add(GetUserList()),
+    return  MultiBlocProvider(
+      providers: [
+      BlocProvider(create: (context) => UserBloc()..add(GetUserList()),),
+      BlocProvider(create: (context) => ConnectedBloc()),
+
+    ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MainPage(),
+          debugShowCheckedModeBanner: false,
+          home: OpenPage(),
+
       ),
     );
   }

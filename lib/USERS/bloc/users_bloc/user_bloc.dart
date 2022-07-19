@@ -1,16 +1,17 @@
-
+import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:userlist/USERS/models/userslist.dart';
-import '../../global/errors.dart';
-import '../Repositries/User_Repository.dart';
 
+import '../../../global/errors.dart';
+import '../../Repositries/User_Repository.dart';
+import '../../models/userslist.dart';
 
 
 
 part 'user_event.dart';
 part 'user_state.dart';
+
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
