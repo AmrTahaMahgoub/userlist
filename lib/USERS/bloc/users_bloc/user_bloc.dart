@@ -20,7 +20,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<GetUserList>((event, emit) async {
       try {
         emit(UserLoading());
-        final myList = await _apiRepository.GetUserList();
+        final myList = await _apiRepository.getUserList();
         emit(UserLoaded(myList));
 
       }

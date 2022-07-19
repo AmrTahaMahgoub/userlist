@@ -14,7 +14,7 @@ class UserDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('USER DETAILS', style: KappbarText),
+        title: Text('USER DETAILS', style: kAppbarText),
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
@@ -44,11 +44,11 @@ class UserDetails extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: Knametext,
+                    style: kNametext,
                   ),
                   Text(
                     email,
-                    style: KemailText,
+                    style: kEmailText,
                   ),
 
                 ],

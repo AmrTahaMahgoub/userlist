@@ -31,7 +31,7 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.white,
         title: const Text(
           'User List',
-          style: KappbarText,
+          style: kAppbarText,
         ),
       ),
       body: Container(
@@ -78,11 +78,11 @@ class _MainPageState extends State<MainPage> {
                                   children: [
                                     Text(
                                       state.UserListModel.data[index].name,
-                                      style: Knametext,
+                                      style: kNametext,
                                     ),
                                     Text(
                                       state.UserListModel.data[index].email,
-                                      style: KemailText,
+                                      style: kEmailText,
                                     ),
                                   ],
                                 ),

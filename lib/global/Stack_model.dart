@@ -14,7 +14,7 @@ class StackModel extends StatelessWidget {
         Center(
           child: Text(
             named.trim().split(' ').map((e) => e[0]).take(2).join(),
-            style: KletterText,
+            style: kLetterText,
           ),
         ),
         const Align(
