@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:userlist/USERS/Repositries/User_Repository.dart';
 
 
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
       providers: [
-      BlocProvider(create: (context) => UserBloc()..add(GetUserList()),),
+      BlocProvider(create: (context) => UserBloc(apiRepository:ApiRepository() )..add(UserEventLoad()),),
       BlocProvider(create: (context) => ConnectedBloc()),
 
     ],

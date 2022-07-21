@@ -12,22 +12,23 @@ class UserInitial extends UserState {
 }
 
 class UserLoading extends UserState {
+  String message;
+   UserLoading({required this.message });
   @override
   List<Object?> get props => [];
 }
 
 class UserLoaded extends UserState {
 
-
-
-  UsersListModel UserListModel ;
-  UserLoaded(this.UserListModel);
+ // UsersListModel userDataInfo ;
+ final List<UserModel> userDataInfo;
+  UserLoaded(this.userDataInfo);
   @override
   List<Object?> get props => [];
 }
 
 class UserError extends UserState {
-  final String? error;
+  final String error;
   const UserError(this.error);
 }
 
